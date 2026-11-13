@@ -26,9 +26,10 @@ class MainActivity : AppCompatActivity() {
         }
         setupSeekBar()
         setupCheckBoxes()
-        configurarBotonGuardar()
+        setupSaveButton()
     }
 
+    // Feature 1: the SeekBar updates the level text
     private fun setupSeekBar() {
         val sbLevel = findViewById<SeekBar>(R.id.sbLevel)
         val txtLevel = findViewById<TextView>(R.id.txtLevel)
@@ -44,40 +45,41 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun configurarBotonGuardar() {
-        val etNombre = findViewById<EditText>(R.id.etName)
+    // Feature 3: the Save button collects the data and shows it in txtResult
+    private fun setupSaveButton() {
+        val etName = findViewById<EditText>(R.id.etName)
         val cbAndroid = findViewById<CheckBox>(R.id.cbAndroid)
         val cbReact = findViewById<CheckBox>(R.id.cbReact)
         val cbFlutter = findViewById<CheckBox>(R.id.cbFlutter)
-        val rgModalidad = findViewById<RadioGroup>(R.id.rgMode)
-        val btnGuardar = findViewById<Button>(R.id.btnSave)
-        val txtResultado = findViewById<TextView>(R.id.txtResult)
+        val rgMode = findViewById<RadioGroup>(R.id.rgMode)
+        val btnSave = findViewById<Button>(R.id.btnSave)
+        val txtResult = findViewById<TextView>(R.id.txtResult)
 
-        btnGuardar.setOnClickListener {
-            val nombre = etNombre.text.toString().trim()
-            if (nombre.isEmpty()) {
-                etNombre.error = "Escribe tu nombre"
+        btnSave.setOnClickListener {
+            val name = etName.text.toString().trim()
+            if (name.isEmpty()) {
+                etName.error = "Enter your name"
                 return@setOnClickListener
             }
 
-            val tecnologias = listOf(cbAndroid, cbReact, cbFlutter)
+            val technologies = listOf(cbAndroid, cbReact, cbFlutter)
                 .filter { it.isChecked }
                 .joinToString(", ") { it.text }
 
-            val modalidad = when (rgModalidad.checkedRadioButtonId) {
-                R.id.rbOnSite -> "Presencial"
+            val mode = when (rgMode.checkedRadioButtonId) {
+                R.id.rbOnSite -> "On-site"
                 R.id.rbOnline -> "Online"
-                R.id.rbHybrid -> "Mixta"
-                else -> "sin elegir"
+                R.id.rbHybrid -> "Hybrid"
+                else -> "not selected"
             }
 
-            txtResultado.text = "Nombre: $nombre\n" +
-                    "Tecnologías: ${tecnologias.ifEmpty { "ninguna" }}\n" +
-                    "Modalidad: $modalidad"
+            txtResult.text = "Name: $name\n" +
+                    "Technologies: ${technologies.ifEmpty { "none" }}\n" +
+                    "Mode: $mode"
         }
     }
 
-
+    // Feature 2: each CheckBox shows a Toast when it is checked or unchecked
     private fun setupCheckBoxes() {
         val cbAndroid = findViewById<CheckBox>(R.id.cbAndroid)
         val cbReact = findViewById<CheckBox>(R.id.cbReact)
@@ -92,5 +94,4 @@ class MainActivity : AppCompatActivity() {
         cbReact.setOnCheckedChangeListener(listener)
         cbFlutter.setOnCheckedChangeListener(listener)
     }
-
 }

@@ -1,6 +1,11 @@
 package com.esqroot.sprint1
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +20,39 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        configurarBotonGuardar()
+    }
+    private fun configurarBotonGuardar() {
+        val etNombre = findViewById<EditText>(R.id.etNombre)
+        val cbAndroid = findViewById<CheckBox>(R.id.cbAndroid)
+        val cbReact = findViewById<CheckBox>(R.id.cbReact)
+        val cbFlutter = findViewById<CheckBox>(R.id.cbFlutter)
+        val rgModalidad = findViewById<RadioGroup>(R.id.rgModalidad)
+        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
+        val txtResultado = findViewById<TextView>(R.id.txtResultado)
+
+        btnGuardar.setOnClickListener {
+            val nombre = etNombre.text.toString().trim()
+            if (nombre.isEmpty()) {
+                etNombre.error = "Escribe tu nombre"
+                return@setOnClickListener
+            }
+
+            val tecnologias = listOf(cbAndroid, cbReact, cbFlutter)
+                .filter { it.isChecked }
+                .joinToString(", ") { it.text }
+
+            val modalidad = when (rgModalidad.checkedRadioButtonId) {
+                R.id.rbPresencial -> "Presencial"
+                R.id.rbOnline -> "Online"
+                R.id.rbMixta -> "Mixta"
+                else -> "sin elegir"
+            }
+
+            txtResultado.text = "Nombre: $nombre\n" +
+                    "Tecnologías: ${tecnologias.ifEmpty { "ninguna" }}\n" +
+                    "Modalidad: $modalidad"
         }
     }
 }

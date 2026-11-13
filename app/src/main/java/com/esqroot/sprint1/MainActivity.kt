@@ -6,6 +6,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -23,18 +24,34 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setupSeekBar()
         setupCheckBoxes()
         configurarBotonGuardar()
     }
 
+    private fun setupSeekBar() {
+        val sbLevel = findViewById<SeekBar>(R.id.sbLevel)
+        val txtLevel = findViewById<TextView>(R.id.txtLevel)
+
+        sbLevel.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                txtLevel.text = "Selected level: $progress"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {}
+        })
+    }
+
     private fun configurarBotonGuardar() {
-        val etNombre = findViewById<EditText>(R.id.etNombre)
+        val etNombre = findViewById<EditText>(R.id.etName)
         val cbAndroid = findViewById<CheckBox>(R.id.cbAndroid)
         val cbReact = findViewById<CheckBox>(R.id.cbReact)
         val cbFlutter = findViewById<CheckBox>(R.id.cbFlutter)
-        val rgModalidad = findViewById<RadioGroup>(R.id.rgModalidad)
-        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
-        val txtResultado = findViewById<TextView>(R.id.txtResultado)
+        val rgModalidad = findViewById<RadioGroup>(R.id.rgMode)
+        val btnGuardar = findViewById<Button>(R.id.btnSave)
+        val txtResultado = findViewById<TextView>(R.id.txtResult)
 
         btnGuardar.setOnClickListener {
             val nombre = etNombre.text.toString().trim()
@@ -48,9 +65,9 @@ class MainActivity : AppCompatActivity() {
                 .joinToString(", ") { it.text }
 
             val modalidad = when (rgModalidad.checkedRadioButtonId) {
-                R.id.rbPresencial -> "Presencial"
+                R.id.rbOnSite -> "Presencial"
                 R.id.rbOnline -> "Online"
-                R.id.rbMixta -> "Mixta"
+                R.id.rbHybrid -> "Mixta"
                 else -> "sin elegir"
             }
 

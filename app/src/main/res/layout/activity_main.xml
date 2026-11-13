@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ejemplo de componentes Android"
+        android:text="Android components example"
         android:textColor="@color/black"
         android:textSize="28sp" />
 
@@ -24,13 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Componentes para mostrar información" />
+        android:text="Components to display information" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Este texto se muestra mediante un TextView" />
+        android:text="This text is shown with a TextView" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="100dp"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Progreso: 50%" />
+        android:text="Progress: 50%" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:layout_width="match_parent"
@@ -76,20 +76,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Introduce tu nombre" />
+        android:text="Enter your name" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="Name"
         android:inputType="text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Selecciona tecnologías:" />
+        android:text="Select technologies:" />
 
     <CheckBox
         android:id="@+id/cbAndroid"
@@ -114,19 +114,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Selecciona una modalidad:" />
+        android:text="Select a mode:" />
 
     <RadioGroup
-        android:id="@+id/rgModalidad"
+        android:id="@+id/rgMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/rbPresencial"
+            android:id="@+id/rbOnSite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Presencial" />
+            android:text="On-site" />
 
         <RadioButton
             android:id="@+id/rbOnline"
@@ -135,57 +135,57 @@
             android:text="Online" />
 
         <RadioButton
-            android:id="@+id/rbMixta"
+            android:id="@+id/rbHybrid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mixta" />
+            android:text="Hybrid" />
     </RadioGroup>
 
     <Switch
-        android:id="@+id/swNotificaciones"
+        android:id="@+id/swNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Notificaciones" />
+        android:text="Notifications" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Selecciona un curso:" />
+        android:text="Select a course:" />
 
     <Spinner
-        android:id="@+id/spCurso"
+        android:id="@+id/spCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/txtNivel"
+        android:id="@+id/txtLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Nivel seleccionado: 50" />
+        android:text="Selected level: 50" />
 
     <SeekBar
-        android:id="@+id/sbNivel"
+        android:id="@+id/sbLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
         android:progress="50" />
 
     <Button
-        android:id="@+id/btnGuardar"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Guardar información" />
+        android:text="Save information" />
 
     <TextView
-        android:id="@+id/txtResultado"
+        android:id="@+id/txtResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Aquí aparecerá el resultado." />
+        android:text="The result will appear here." />
 
 
 </LinearLayout>
